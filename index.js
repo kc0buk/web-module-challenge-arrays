@@ -29,6 +29,9 @@ var originalFlavors = ["Banana Nut Fudge",
     "Strawberry",
     "Vanilla",
     "Vanilla Burnt Almond"]
+const position = originalFlavors === "Vanilla";
+console.log(position);
+    // originalFlavors.splice(())
 
 /* Task 1: Confirm that the array is exactly 31 flavors. Your function should accept:
 
@@ -64,11 +67,11 @@ For example addFlavor("Rainbow Sherbert", originalFlavors) should return ["Rainb
 function addFlavor(flavor,list){
     const flavorList = list;
     flavorList.unshift(flavor);
-    flavorList.pop();
-    return flavorList;
+    // flavorList.pop();
+    console.log(flavorList);
 }
 
-console.log(addFlavor("Rainbow Sherbert", originalFlavors));
+addFlavor("Rainbow Sherbert", originalFlavors);
 
 /* Task 3: Houston, we have a problem! There are now 32 flavors in the array! Your task is to remove an item from the end of the array. 
 
@@ -80,11 +83,13 @@ Your function should remove a flavor from the end of the array and console.log t
 
 For example removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]*/ 
 
-function removeLastFlavor(/*code here*/){
-
-    /*code here*/
-
+function removeLastFlavor(list){
+    const flavorList = list;
+    flavorList.pop();
+    console.log(flavorList);
 }
+
+removeLastFlavor(originalFlavors);
 
 /* Task 4: Write a function that returns a flavor at a given index in the array.
 
@@ -95,11 +100,11 @@ Your function should accept:
 
 For example, getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully. */
 
-function getFlavorByIndex(/*code here*/){
-
-    /*code here*/
-
+function getFlavorByIndex(list,flavorIndex){
+    return list[flavorIndex];
 }
+
+console.log(getFlavorByIndex(originalFlavors,2));
 
 /* Task 5: As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, as opposed to just arbitrarily removing the first or last flavor. Your task is to get an index by flavor name, and remove that flavor from the array. 
 
@@ -114,12 +119,13 @@ Hint: You can use .splice() for this
 
 */
 
-function removeFlavorByName(/*code here*/){
-
-    /*code here*/
-
+function removeFlavorByName(list,flavor){
+ const flavorList = list;
+ flavorList.splice((flavorList.indexOf(flavor)));
+ console.log(flavorList);
 }
 
+removeFlavorByName(originalFlavors,"Vanilla");
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
 
