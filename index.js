@@ -159,13 +159,17 @@ DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 
 hint - you can use the .includes method to help you solve this */
 
-function filterByWord(/*code here*/){
-
-    /*code here*/
-
+function filterByWord(list,keyword){
+    let filterList = [];
+    for(i = 0; i < list.length; i++) {
+        if (list[i].includes(keyword) === true) {
+            filterList.push(list[i]);
+        } 
+    }
+    console.log(filterList); 
 }
 
-
+filterByWord(originalFlavors, "Chocolate");
 
 /* 🧁🍦🍨 STRETCH 🍨🍦🍫*/ 
 
