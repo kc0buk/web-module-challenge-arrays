@@ -54,6 +54,6 @@ Make sure you are invoking your function after defining and wrapping a console.l
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request.**
-- [ ] Add your team lead as a reviewer on the pull-request
+- [x] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request.**
+- [x] Add your team lead as a reviewer on the pull-request (https://github.com/kc0buk/web-module-challenge-arrays/pull/1)
 - [ ] Your team lead will count the project as complete by merging the branch back into master

@@ -29,9 +29,7 @@ var originalFlavors = ["Banana Nut Fudge",
     "Strawberry",
     "Vanilla",
     "Vanilla Burnt Almond"]
-const position = originalFlavors === "Vanilla";
-console.log(position);
-    // originalFlavors.splice(())
+
 
 /* Task 1: Confirm that the array is exactly 31 flavors. Your function should accept:
 
@@ -43,8 +41,7 @@ To save you from having to count the items above, you can assume that length of 
 
 i.e. is31Flavors(originalFlavors) will return TRUE.*/
 function is31Flavors(flavors){
-    const howLong = flavors.length;
-    if (howLong === 31) {
+    if (flavors.length === 31) {
          return true;
     } else {
         return false;
@@ -65,10 +62,8 @@ Your function should add the flavor to the front of the array and console.log th
 For example addFlavor("Rainbow Sherbert", originalFlavors) should return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla Burnt Almond"] */ 
 
 function addFlavor(flavor,list){
-    const flavorList = list;
-    flavorList.unshift(flavor);
-    // flavorList.pop();
-    console.log(flavorList);
+    list.unshift(flavor);
+    console.log(list);
 }
 
 addFlavor("Rainbow Sherbert", originalFlavors);
@@ -84,9 +79,8 @@ Your function should remove a flavor from the end of the array and console.log t
 For example removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]*/ 
 
 function removeLastFlavor(list){
-    const flavorList = list;
-    flavorList.pop();
-    console.log(flavorList);
+    list.pop();
+    console.log(list);
 }
 
 removeLastFlavor(originalFlavors);
@@ -120,12 +114,11 @@ Hint: You can use .splice() for this
 */
 
 function removeFlavorByName(list,flavor){
- const flavorList = list;
- flavorList.splice((flavorList.indexOf(flavor)));
- console.log(flavorList);
+ list.splice((list.indexOf(flavor)));
+ return list;
 }
 
-removeFlavorByName(originalFlavors,"Vanilla");
+console.log(removeFlavorByName(originalFlavors,"Vanilla"));
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
 
@@ -135,14 +128,23 @@ Your function should accept:
 
 and should return a new array that is identical to the old array. You can name the new array however you'd like. */
 
-function copy(list,newList){
-    newList = list.slice();
-    console.log(newList);
+// function copy(list,newList){
+//     newList = list.slice();
+//     console.log(newList);
+// }
+
+// let newFlavorList = [];
+
+// copy(originalFlavors, newFlavorList);
+
+function copyTwo(list,name) {
+    name = [];
+    name = [...list]
+    return name;
 }
 
-let newFlavorList = [];
+console.log(copyTwo(originalFlavors,'newFlavorList'));
 
-copy(originalFlavors, newFlavorList);
 
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". This way you could also filter for "Vanilla", "Sherbert", etc. when those holidays roll around.
 
@@ -160,16 +162,16 @@ DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 hint - you can use the .includes method to help you solve this */
 
 function filterByWord(list,keyword){
-    let filterList = [];
+    filterList = [];
     for(i = 0; i < list.length; i++) {
-        if (list[i].includes(keyword) === true) {
+        if (list[i].includes(keyword)) {
             filterList.push(list[i]);
         } 
     }
-    console.log(filterList); 
+     return filterList; 
 }
 
-filterByWord(originalFlavors, "Chocolate");
+console.log(filterByWord(originalFlavors, "Chocolate"));
 
 /* 🧁🍦🍨 STRETCH 🍨🍦🍫*/ 
 
@@ -183,11 +185,11 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-function getAverageWordLength(/*code here*/){
+// function getAverageWordLength(/*code here*/){
 
-    /*code here*/
+//     /*code here*/
 
-}
+// }
 
 
 /* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
@@ -271,8 +273,21 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(/*code here*/){
 
-    /*code here*/
-
+function getRandomFlavors(arrayOne,arrayTwo,arrayThree,arrayFour) {
+    randomFlavors = [];
+    const bigList = arrayOne.concat(arrayTwo).concat(arrayThree).concat(arrayFour);
+    const getRandomInt = function(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+    for (let i = 0; i < 31; i++) {
+        const randomPick = bigList[getRandomInt(0,bigList.length -1)];
+        bigList.splice(randomPick,1);
+        randomFlavors.unshift(randomPick);
+    }
+    console.log(randomFlavors);
 }
+
+getRandomFlavors(originalFlavors,regionalFlavors,seasonalFlavors,newFlavors);
